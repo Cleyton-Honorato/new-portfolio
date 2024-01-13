@@ -18,10 +18,15 @@ export function About() {
           <Info />
 
           <p className="about__description">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic
-            debitis, et tempora assumenda asperiores, delectus quod quasi ullam
-            ab minima voluptas officiis quaerat. Ullam soluta modi et fugiat
-            nulla obcaecati?
+            Desenvolvedor de software especializado em front-end com habilidades
+            em JavaScript, TypeScript, ReactJS, React Native, NodeJS,
+            Styled-components, Vue, e outras tecnologias. Apaixonado por
+            tecnologia e solução criativa de problemas, busco constantemente
+            oportunidades de aprendizado e crescimento. Comprometido em
+            contribuir para a melhoria da vida das pessoas, acredito na
+            importância da colaboração e desenvolvimento contínuo para o
+            sucesso. Aberto a conexões e interessado em conhecer profissionais
+            com objetivos semelhantes. Vamos crescer juntos!
           </p>
 
           <a download="" href={CV} className="button button-flex">
