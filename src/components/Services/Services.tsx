@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { X } from 'lucide-react';
 import './Services.css';
 
 export function Services() {
@@ -35,10 +36,10 @@ export function Services() {
             }
           >
             <div className="services__modal-content">
-              <i
-                className="uil uil-times services__modal-close"
+              <X
+                className="services__modal-close"
                 onClick={() => toggleTab(0)}
-              ></i>
+              />
 
               <h3 className="services__modal-title">Product Designer</h3>
               <p className="services__modal-description">
@@ -107,10 +108,10 @@ export function Services() {
             }
           >
             <div className="services__modal-content">
-              <i
-                className="uil uil-times services__modal-close"
+              <X
+                className="services__modal-close"
                 onClick={() => toggleTab(0)}
-              ></i>
+              />
 
               <h3 className="services__modal-title">UI/UX Designer</h3>
               <p className="services__modal-description">
@@ -179,10 +180,10 @@ export function Services() {
             }
           >
             <div className="services__modal-content">
-              <i
-                className="uil uil-times services__modal-close"
+              <X
+                className="services__modal-close"
                 onClick={() => toggleTab(0)}
-              ></i>
+              />
 
               <h3 className="services__modal-title">Visual Designer</h3>
               <p className="services__modal-description">
