@@ -1,11 +1,12 @@
-import './App.css';
+import "./App.css";
 
-import Header from './components/Header';
-import Home from './components/Home';
-import About from './components/About';
-import Skills from './components/Skills';
-import Services from './components/Services';
-import Qualifications from './components/Qualifications';
+import Header from "./components/Header";
+import Home from "./components/Home";
+import About from "./components/About";
+import Skills from "./components/Skills";
+import Services from "./components/Services";
+import Qualifications from "./components/Qualifications";
+import Contact from "./components/Contact";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Skills />
         <Services />
         <Qualifications />
+        <Contact />
       </main>
     </>
   );
