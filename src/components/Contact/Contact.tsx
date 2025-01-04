@@ -1,4 +1,6 @@
-import { Info, ArrowRight, Instagram, Mail, MessageSquare } from "lucide-react";
+import { ArrowRight, Instagram, Mail, MessageSquare } from "lucide-react";
+
+import "./Contact.css";
 
 export function Contact() {
   return (
