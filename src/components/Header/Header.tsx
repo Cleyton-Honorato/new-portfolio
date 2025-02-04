@@ -53,9 +53,9 @@ export function Header() {
             </li>
 
             <li className="nav__item">
-              <a href="#portifolio" className="nav__link">
+              <a href="#qualification" className="nav__link">
                 <Image className="nav__icon" />
-                Portifolio
+                Qualifications
               </a>
             </li>
 

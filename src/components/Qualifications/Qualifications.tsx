@@ -1,7 +1,7 @@
-import { GraduationCap, Briefcase, Calendar } from 'lucide-react';
+import { GraduationCap, Briefcase, Calendar } from "lucide-react";
 
-import './Qualifications.css';
-import { useState } from 'react';
+import "./Qualifications.css";
+import { useState } from "react";
 
 enum EQualification {
   education,
@@ -16,7 +16,7 @@ export function Qualifications() {
   }
 
   return (
-    <section className="qualification section">
+    <section className="qualification section" id="qualification">
       <h2 className="section__title">Qualification</h2>
       <span className="section__subtitle">My personel journey</span>
 
@@ -25,8 +25,8 @@ export function Qualifications() {
           <div
             className={
               toggleState === EQualification.education
-                ? 'qualification__button qualification__active button--flex'
-                : 'qualification__button button--flex'
+                ? "qualification__button qualification__active button--flex"
+                : "qualification__button button--flex"
             }
             onClick={() => onToggleTab(EQualification.education)}
           >
@@ -37,8 +37,8 @@ export function Qualifications() {
           <div
             className={
               toggleState === EQualification.experience
-                ? 'qualification__button qualification__active button--flex'
-                : 'qualification__button button--flex'
+                ? "qualification__button qualification__active button--flex"
+                : "qualification__button button--flex"
             }
             onClick={() => onToggleTab(EQualification.experience)}
           >
@@ -51,8 +51,8 @@ export function Qualifications() {
           <div
             className={
               toggleState === EQualification.education
-                ? 'qualification__content qualification__content-active'
-                : 'qualification__content'
+                ? "qualification__content qualification__content-active"
+                : "qualification__content"
             }
           >
             <div className="qualification__data">
@@ -131,8 +131,8 @@ export function Qualifications() {
           <div
             className={
               toggleState === EQualification.experience
-                ? 'qualification__content qualification__content-active'
-                : 'qualification__content'
+                ? "qualification__content qualification__content-active"
+                : "qualification__content"
             }
           >
             <div className="qualification__data">
