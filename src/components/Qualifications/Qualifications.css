@@ -10,7 +10,7 @@
 
 .qualification__button {
   font-size: var(--h3-font-size);
-  font-wight: var(--font-medium);
+  font-weight: var(--font-medium);
   color: var(--title-color);
   margin: 0 var(--mb-1);
   cursor: pointer;
@@ -61,7 +61,7 @@
 }
 
 .qualification__calendar {
-  diplay: flex;
+  display: flex;
   font-size: var(--small-font-size);
 }
 
