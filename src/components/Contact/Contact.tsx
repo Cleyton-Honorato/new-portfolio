@@ -97,7 +97,7 @@ export function Contact() {
                 placeholder="Write your project"
               />
             </div>
-            <button className="button button--flex">
+            <button className="button button--flex button--disabled" disabled >
               Send message{" "}
               <svg
                 className="button__icon"

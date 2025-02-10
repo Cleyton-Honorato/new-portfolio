@@ -27,42 +27,42 @@ export function Header() {
             <li className="nav__item">
               <a href="#home" className="nav__link">
                 <Home className="nav__icon" />
-                home
+                Início
               </a>
             </li>
 
             <li className="nav__item">
               <a href="#about" className="nav__link">
                 <User className="nav__icon" />
-                About
+                Sobre
               </a>
             </li>
 
             <li className="nav__item">
               <a href="#skills" className="nav__link">
                 <FileText className="nav__icon" />
-                Skills
+                Habilidades
               </a>
             </li>
 
             <li className="nav__item">
               <a href="#services" className="nav__link">
                 <Briefcase className="nav__icon" />
-                Services
+                Serviços
               </a>
             </li>
 
             <li className="nav__item">
               <a href="#qualification" className="nav__link">
                 <Image className="nav__icon" />
-                Qualifications
+                Qualificações
               </a>
             </li>
 
             <li className="nav__item">
               <a href="#contact" className="nav__link">
                 <SendHorizonal className="nav__icon" />
-                Contact
+                Contato
               </a>
             </li>
           </ul>
