@@ -11,8 +11,8 @@ export default function Backend() {
             <BadgeCheck className="badge-check-icon" />
 
             <div>
-              <h3 className="skills__name">PHP</h3>
-              <span className="skills__level">Intermediate</span>
+              <h3 className="skills__name">Node</h3>
+              <span className="skills__level">Básico</span>
             </div>
           </div>
 
@@ -20,8 +20,8 @@ export default function Backend() {
             <BadgeCheck className="badge-check-icon" />
 
             <div>
-              <h3 className="skills__name">Node Js</h3>
-              <span className="skills__level">Basic</span>
+              <h3 className="skills__name">Mongodb</h3>
+              <span className="skills__level">Básico</span>
             </div>
           </div>
 
@@ -29,8 +29,8 @@ export default function Backend() {
             <BadgeCheck className="badge-check-icon" />
 
             <div>
-              <h3 className="skills__name">Python</h3>
-              <span className="skills__level">Intermediate</span>
+              <h3 className="skills__name">TypeORM</h3>
+              <span className="skills__level">Básico</span>
             </div>
           </div>
         </div>
@@ -41,7 +41,7 @@ export default function Backend() {
 
             <div>
               <h3 className="skills__name">MySQL</h3>
-              <span className="skills__level">Intermediate</span>
+              <span className="skills__level">Básico</span>
             </div>
           </div>
 
@@ -50,16 +50,7 @@ export default function Backend() {
 
             <div>
               <h3 className="skills__name">Firebase</h3>
-              <span className="skills__level">Intermediate</span>
-            </div>
-          </div>
-
-          <div className="skills__data">
-            <BadgeCheck className="badge-check-icon" />
-
-            <div>
-              <h3 className="skills__name">SQL</h3>
-              <span className="skills__level">Intermediate</span>
+              <span className="skills__level">Básico</span>
             </div>
           </div>
         </div>

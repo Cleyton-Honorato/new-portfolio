@@ -17,8 +17,8 @@ export function Qualifications() {
 
   return (
     <section className="qualification section" id="qualification">
-      <h2 className="section__title">Qualification</h2>
-      <span className="section__subtitle">My personel journey</span>
+      <h2 className="section__title">Qualificação</h2>
+      <span className="section__subtitle">Jornada Pessoal</span>
 
       <div className="qualification__container container">
         <div className="qualification__tabs">

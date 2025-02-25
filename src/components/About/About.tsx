@@ -1,5 +1,5 @@
 import AboutImg from "../../assets/about2.jpg";
-import CV from "../../assets/John-Cv.pdf";
+import CV from "../../assets/curriculo.pdf";
 import Info from "./Info";
 import { SendIcon } from "../Icons";
 
@@ -8,8 +8,8 @@ import "./About.css";
 export function About() {
   return (
     <section className="about section" id="about">
-      <h2 className="section__title">About Me</h2>
-      <span className="section__subtitle">My introduction</span>
+      <h2 className="section__title">Sobre</h2>
+      <span className="section__subtitle">Introdução</span>
 
       <div className="about__container container grid">
         <img src={AboutImg} alt="my" className="about__img" />
