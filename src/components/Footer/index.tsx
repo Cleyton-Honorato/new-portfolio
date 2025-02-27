@@ -11,19 +11,16 @@ export default function Footer() {
         <ul className="footer__list">
           <li>
             <a href="#about" className="footer__link">
-              About
+              Sobre
             </a>
           </li>
 
           <li>
-            <a href="#portifolio" className="footer__link">
-              Projects
-            </a>
-          </li>
-
-          <li>
-            <a href="#testimonials" className="footer__link">
-              Testimoials
+            <a
+              href="https://github.com/Cleyton-Honorato"
+              className="footer__link"
+            >
+              Projetos
             </a>
           </li>
         </ul>

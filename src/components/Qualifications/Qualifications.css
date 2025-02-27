@@ -27,7 +27,9 @@
 
 .qualification__active {
   color: var(--title-color-dark);
+  border-bottom: solid var(--title-color-dark) 2px;
 }
+
 
 .qualification__sections {
   display: grid;

@@ -57,13 +57,11 @@ export function Qualifications() {
           >
             <div className="qualification__data">
               <div>
-                <h3 className="qualification__title">Web Design</h3>
-                <span className="qualification__subtitle">
-                  Spain - Institute
-                </span>
+                <h3 className="qualification__title">Redes de Computadores</h3>
+                <span className="qualification__subtitle">Técnico</span>
                 <div className="qualification__calendar">
                   <Calendar className="qualification__calendar-icon" />
-                  2021 - Present
+                  2016 - 2018
                 </div>
               </div>
 
@@ -80,26 +78,22 @@ export function Qualifications() {
                 <span className="qualification__line"></span>
               </div>
               <div>
-                <h3 className="qualification__title">Art Director</h3>
-                <span className="qualification__subtitle">
-                  Spain - Institute
-                </span>
+                <h3 className="qualification__title">FullStack Master</h3>
+                <span className="qualification__subtitle">Certificação - DevPleno</span>
                 <div className="qualification__calendar">
-                  <Calendar className="qualification__calendar-icon" /> 2021 -
-                  Present
+                  <Calendar className="qualification__calendar-icon" /> 2025
                 </div>
               </div>
             </div>
 
             <div className="qualification__data">
               <div>
-                <h3 className="qualification__title">Web Develpment</h3>
+                <h3 className="qualification__title">React Native</h3>
                 <span className="qualification__subtitle">
-                  Spain - Institute
+                  Certificação - Udemy
                 </span>
                 <div className="qualification__calendar">
-                  <Calendar className="qualification__calendar-icon" /> 2021 -
-                  Present
+                  <Calendar className="qualification__calendar-icon" /> 2021
                 </div>
               </div>
 
@@ -116,13 +110,12 @@ export function Qualifications() {
                 <span className="qualification__line"></span>
               </div>
               <div>
-                <h3 className="qualification__title">UX Expert</h3>
+                <h3 className="qualification__title">Nodejs, Reactjs</h3>
                 <span className="qualification__subtitle">
-                  Spain - Institute
+                  Certificação - Rocketseat
                 </span>
                 <div className="qualification__calendar">
-                  <Calendar className="qualification__calendar-icon" /> 2017 -
-                  2018
+                  <Calendar className="qualification__calendar-icon" /> 2024
                 </div>
               </div>
             </div>
@@ -137,13 +130,11 @@ export function Qualifications() {
           >
             <div className="qualification__data">
               <div>
-                <h3 className="qualification__title">Teste do cley</h3>
-                <span className="qualification__subtitle">
-                  Spain - Institute
-                </span>
+                <h3 className="qualification__title"> Tijuca Alimentos</h3>
+                <span className="qualification__subtitle">Estágio</span>
                 <div className="qualification__calendar">
-                  <Calendar className="qualification__calendar-icon" /> 2021 -
-                  Present
+                  <Calendar className="qualification__calendar-icon" /> 2019 -
+                  2019
                 </div>
               </div>
 
@@ -160,26 +151,26 @@ export function Qualifications() {
                 <span className="qualification__line"></span>
               </div>
               <div>
-                <h3 className="qualification__title">Art Director</h3>
+                <h3 className="qualification__title">Tijuca Alimentos</h3>
                 <span className="qualification__subtitle">
-                  Spain - Institute
+                  Desenvolvedor Júnior
                 </span>
                 <div className="qualification__calendar">
-                  <Calendar className="qualification__calendar-icon" /> 2021 -
-                  Present
+                  <Calendar className="qualification__calendar-icon" />
+                  <span className="">2019 - 2020</span>
                 </div>
               </div>
             </div>
 
             <div className="qualification__data">
               <div>
-                <h3 className="qualification__title">Web Develpment</h3>
+                <h3 className="qualification__title">Trílogo</h3>
                 <span className="qualification__subtitle">
-                  Spain - Institute
+                  Desenvolvedor Pleno
                 </span>
                 <div className="qualification__calendar">
-                  <Calendar className="qualification__calendar-icon" /> 2021 -
-                  Present
+                  <Calendar className="qualification__calendar-icon" /> 2020 -
+                  2024
                 </div>
               </div>
 
@@ -196,13 +187,11 @@ export function Qualifications() {
                 <span className="qualification__line"></span>
               </div>
               <div>
-                <h3 className="qualification__title">UX Expert</h3>
-                <span className="qualification__subtitle">
-                  Spain - Institute
-                </span>
+                <h3 className="qualification__title">pantheo.tech</h3>
+                <span className="qualification__subtitle">Tech Lead</span>
                 <div className="qualification__calendar">
-                  <Calendar className="qualification__calendar-icon" /> 2017 -
-                  2018
+                  <Calendar className="qualification__calendar-icon" /> 2025 -
+                  presente
                 </div>
               </div>
             </div>
