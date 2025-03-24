@@ -25,7 +25,7 @@ export function Contact() {
                 href="mailto:examplemail@gmail.com"
                 className="contact__button"
               >
-                Write me
+                Fale comigo
                 <ArrowRight className="contact__button-icon" />
               </a>
             </div>
@@ -40,7 +40,7 @@ export function Contact() {
                 href="https://api.whatsapp.com/send?phone=558581843599&text=Hello,%20more%20information!"
                 className="contact__button"
               >
-                Write me
+                Fale comigo
                 <ArrowRight className="contact__button-icon" />
               </a>
             </div>
@@ -55,7 +55,7 @@ export function Contact() {
                 href="https://www.instagram.com/cleytin.1/"
                 className="contact__button"
               >
-                Write me
+                Fale comigo
                 <ArrowRight className="contact__button-icon" />
               </a>
             </div>
@@ -63,42 +63,42 @@ export function Contact() {
         </div>
 
         <div className="contact__content">
-          <h3 className="contact__title">Write me your project</h3>
+          <h3 className="contact__title">Entre em contato</h3>
 
-          <form className="contact__form">
+          <form className="contact__form" action="">
             <div className="contact__form-div">
-              <label className="contact__form-tag">Name</label>
+              <label className="contact__form-tag">Nome</label>
               <input
                 type="text"
                 name="name"
                 className="contact__form-input"
-                placeholder="Insert your name"
+                placeholder="Escreva seu nome"
               />
             </div>
 
             <div className="contact__form-div">
-              <label className="contact__form-tag">Mail</label>
+              <label className="contact__form-tag">E-mail</label>
               <input
                 type="email"
                 name="email"
                 className="contact__form-input"
-                placeholder="Insert your e-mail"
+                placeholder="Escreva seu e-mail"
               />
             </div>
 
             <div className="contact__form-div contact__form-area">
-              <label className="contact__form-tag">Project</label>
+              <label className="contact__form-tag">Mensagem</label>
               <textarea
                 name="project"
                 id="project"
                 cols={30}
                 rows={20}
                 className="contact__form-input"
-                placeholder="Write your project"
+                placeholder="Escreva sua mensagem"
               />
             </div>
-            <button className="button button--flex button--disabled" disabled >
-              Send message{" "}
+            <button className="button button--flex button--disabled">
+              Enviar
               <svg
                 className="button__icon"
                 xmlns="http://www.w3.org/2000/svg"

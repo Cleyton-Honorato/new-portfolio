@@ -11,7 +11,7 @@ export default function Backend() {
             <BadgeCheck className="badge-check-icon" />
 
             <div>
-              <h3 className="skills__name">Node</h3>
+              <h3 className="skills__name">NodeJS</h3>
               <span className="skills__level">Básico</span>
             </div>
           </div>
@@ -41,6 +41,15 @@ export default function Backend() {
 
             <div>
               <h3 className="skills__name">MySQL</h3>
+              <span className="skills__level">Básico</span>
+            </div>
+          </div>
+
+          <div className="skills__data">
+            <BadgeCheck className="badge-check-icon" />
+
+            <div>
+              <h3 className="skills__name">GraphQL</h3>
               <span className="skills__level">Básico</span>
             </div>
           </div>

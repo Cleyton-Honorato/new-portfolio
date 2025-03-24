@@ -78,22 +78,24 @@ export function Qualifications() {
                 <span className="qualification__line"></span>
               </div>
               <div>
-                <h3 className="qualification__title">FullStack Master</h3>
-                <span className="qualification__subtitle">Certificação - DevPleno</span>
-                <div className="qualification__calendar">
-                  <Calendar className="qualification__calendar-icon" /> 2025
-                </div>
-              </div>
-            </div>
-
-            <div className="qualification__data">
-              <div>
                 <h3 className="qualification__title">React Native</h3>
                 <span className="qualification__subtitle">
                   Certificação - Udemy
                 </span>
                 <div className="qualification__calendar">
                   <Calendar className="qualification__calendar-icon" /> 2021
+                </div>
+              </div>
+            </div>
+
+            <div className="qualification__data">
+              <div>
+                <h3 className="qualification__title">ReactJS</h3>
+                <span className="qualification__subtitle">
+                  Certificação - Rocketseat
+                </span>
+                <div className="qualification__calendar">
+                  <Calendar className="qualification__calendar-icon" /> 2024
                 </div>
               </div>
 
@@ -110,13 +112,30 @@ export function Qualifications() {
                 <span className="qualification__line"></span>
               </div>
               <div>
-                <h3 className="qualification__title">Nodejs, Reactjs</h3>
+                <h3 className="qualification__title">Nodejs</h3>
                 <span className="qualification__subtitle">
                   Certificação - Rocketseat
                 </span>
                 <div className="qualification__calendar">
                   <Calendar className="qualification__calendar-icon" /> 2024
                 </div>
+              </div>
+            </div>
+
+            <div className="qualification__data">
+              <div>
+                <h3 className="qualification__title">Fullstack Master</h3>
+                <span className="qualification__subtitle">
+                  Certificação - Dev Pleno
+                </span>
+                <div className="qualification__calendar">
+                  <Calendar className="qualification__calendar-icon" /> 2025
+                </div>
+              </div>
+
+              <div>
+                <span className="qualification__rounder"></span>
+                <span className="qualification__line"></span>
               </div>
             </div>
           </div>
@@ -191,7 +210,7 @@ export function Qualifications() {
                 <span className="qualification__subtitle">Tech Lead</span>
                 <div className="qualification__calendar">
                   <Calendar className="qualification__calendar-icon" /> 2025 -
-                  presente
+                  Atualmente
                 </div>
               </div>
             </div>

@@ -4,7 +4,7 @@ export default function Social() {
   return (
     <div className="home__social">
       <a
-        href="https://www.instagram.com/cleytin_1/"
+        href="https://www.instagram.com/cleytin.1/"
         className="home__social-icon"
         target="_blank"
       >

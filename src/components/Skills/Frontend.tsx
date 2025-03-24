@@ -20,7 +20,7 @@ export default function Frontend() {
             <BadgeCheck className="badge-check-icon" />
 
             <div>
-              <h3 className="skills__name">Typescript</h3>
+              <h3 className="skills__name">Next</h3>
               <span className="skills__level">Intermediário</span>
             </div>
           </div>
@@ -40,15 +40,6 @@ export default function Frontend() {
             <BadgeCheck className="badge-check-icon" />
 
             <div>
-              <h3 className="skills__name">Next</h3>
-              <span className="skills__level">Intermediário</span>
-            </div>
-          </div>
-
-          <div className="skills__data">
-            <BadgeCheck className="badge-check-icon" />
-
-            <div>
               <h3 className="skills__name">Vue</h3>
               <span className="skills__level">Intermediário</span>
             </div>
@@ -58,7 +49,16 @@ export default function Frontend() {
             <BadgeCheck className="badge-check-icon" />
 
             <div>
-              <h3 className="skills__name">Tailwindcss</h3>
+              <h3 className="skills__name">Redux</h3>
+              <span className="skills__level">Intermediário</span>
+            </div>
+          </div>
+
+          <div className="skills__data">
+            <BadgeCheck className="badge-check-icon" />
+
+            <div>
+              <h3 className="skills__name">TypeScript</h3>
               <span className="skills__level">Intermediário</span>
             </div>
           </div>
