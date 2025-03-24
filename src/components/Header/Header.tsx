@@ -2,7 +2,6 @@ import {
   Home,
   User,
   FileText,
-  Briefcase,
   Image,
   SendHorizonal,
   X,
@@ -44,7 +43,7 @@ export function Header() {
                 Habilidades
               </a>
             </li>
-{/* 
+            {/* 
             <li className="nav__item">
               <a href="#services" className="nav__link">
                 <Briefcase className="nav__icon" />
