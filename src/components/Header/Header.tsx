@@ -43,13 +43,6 @@ export function Header() {
                 Habilidades
               </a>
             </li>
-            {/* 
-            <li className="nav__item">
-              <a href="#services" className="nav__link">
-                <Briefcase className="nav__icon" />
-                Serviços
-              </a>
-            </li> */}
 
             <li className="nav__item">
               <a href="#qualification" className="nav__link">

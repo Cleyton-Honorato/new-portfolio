@@ -13,8 +13,8 @@ export default function Data() {
         soluções inovadoras para desafios complexos.
       </p>
 
-      <a href="#contact" className="button button--flex">
-        Diga olá
+      <a href="#contact" className="button button--flex home__button">
+        <span>Diga olá</span>
         <svg
           className="button__icon"
           xmlns="http://www.w3.org/2000/svg"

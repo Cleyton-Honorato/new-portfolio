@@ -3,7 +3,7 @@ import { ArrowDown } from "lucide-react";
 export default function ScrollDown() {
   return (
     <div className="home__scroll">
-      <a href="#about" className="home__scroll-button button-flex">
+      <a href="#about" className="home__scroll-button">
         <svg
           width="32px"
           height="32px"

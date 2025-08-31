@@ -9,16 +9,29 @@ import Qualifications from "./components/Qualifications";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 
+// Componente de separação entre seções
+const SectionDivider = () => (
+  <div className="section-divider">
+    <div className="section-divider__line"></div>
+    <div className="section-divider__dot"></div>
+    <div className="section-divider__line"></div>
+  </div>
+);
+
 function App() {
   return (
     <>
       <Header />
       <main className="main">
         <Home />
+        <SectionDivider />
         <About />
+        <SectionDivider />
         <Skills />
+        <SectionDivider />
         {/* <Services /> */}
         <Qualifications />
+        <SectionDivider />
         <Contact />
         <Footer />
       </main>

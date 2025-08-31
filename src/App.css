@@ -114,10 +114,6 @@ img {
 }
 
 /*=============== REUSABLE CSS CLASSES ===============*/
-.section {
-  padding: 6rem 0 2rem;
-}
-
 .section__title {
   font-size: var(--h1-font-size);
   color: var(--title-color);
@@ -221,5 +217,106 @@ img {
   .container {
     margin-left: var(--mb-1);
     margin-right: var(--mb-1);
+  }
+}
+
+/*=============== SECTION DIVIDER ===============*/
+.section-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 0;
+  position: relative;
+  opacity: 0;
+  animation: fadeInDivider 1s ease-out 0.5s forwards;
+}
+
+@keyframes fadeInDivider {
+  to {
+    opacity: 1;
+  }
+}
+
+.section-divider__line {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--title-color),
+    transparent
+  );
+  flex: 1;
+  max-width: 200px;
+  opacity: 0.3;
+  transition: all 0.3s ease;
+}
+
+.section-divider__dot {
+  width: 8px;
+  height: 8px;
+  background: var(--title-color);
+  border-radius: 50%;
+  margin: 0 1.5rem;
+  opacity: 0.5;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.2;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 0.1;
+  }
+}
+
+/* Hover effects */
+.section-divider:hover .section-divider__line {
+  opacity: 0.6;
+  max-width: 250px;
+}
+
+.section-divider:hover .section-divider__dot {
+  opacity: 0.8;
+  transform: scale(1.2);
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .section-divider {
+    padding: 2rem 0;
+  }
+
+  .section-divider__line {
+    max-width: 150px;
+  }
+
+  .section-divider__dot {
+    margin: 0 1rem;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .section-divider {
+    padding: 1.5rem 0;
+  }
+
+  .section-divider__line {
+    max-width: 100px;
+  }
+
+  .section-divider__dot {
+    margin: 0 0.75rem;
+    width: 6px;
+    height: 6px;
+  }
+
+  .section-divider__dot::before {
+    width: 12px;
+    height: 12px;
   }
 }

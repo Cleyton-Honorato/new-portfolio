@@ -7,6 +7,8 @@ export default function Social() {
         href="https://www.instagram.com/cleytin.1/"
         className="home__social-icon"
         target="_blank"
+        rel="noopener noreferrer"
+        title="Instagram"
       >
         <Instagram />
       </a>
@@ -14,6 +16,8 @@ export default function Social() {
         href="https://github.com/Cleyton-Honorato"
         className="home__social-icon"
         target="_blank"
+        rel="noopener noreferrer"
+        title="GitHub"
       >
         <Github />
       </a>
@@ -21,6 +25,8 @@ export default function Social() {
         href="https://www.linkedin.com/in/cleyton-honorato-a5586215a/"
         className="home__social-icon"
         target="_blank"
+        rel="noopener noreferrer"
+        title="LinkedIn"
       >
         <Linkedin />
       </a>
