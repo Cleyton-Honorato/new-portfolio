@@ -1,4 +1,4 @@
-import { Github, Instagram, Linkedin } from "lucide-react";
+import { Github, Instagram, Linkedin, Heart } from "lucide-react";
 
 import "./Footer.css";
 
@@ -6,52 +6,48 @@ export default function Footer() {
   return (
     <footer className="footer">
       <div className="footer__container container">
-        <h1 className="footer__title">Cleyton</h1>
+        <div className="footer__content">
+          <div className="footer__header">
+            <h2 className="footer__title">Cleyton Honorato</h2>
+            <p className="footer__subtitle">Desenvolvedor FullStack</p>
+          </div>
 
-        <ul className="footer__list">
-          <li>
-            <a href="#about" className="footer__link">
-              Sobre
+          <div className="footer__social">
+            <a
+              href="https://www.instagram.com/cleytin.1/"
+              className="footer__social-link"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Instagram"
+            >
+              <Instagram className="footer__social-icon" />
             </a>
-          </li>
-
-          <li>
             <a
               href="https://github.com/Cleyton-Honorato"
-              className="footer__link"
+              className="footer__social-link"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="GitHub"
             >
-              Projetos
+              <Github className="footer__social-icon" />
             </a>
-          </li>
-        </ul>
+            <a
+              href="https://www.linkedin.com/in/cleyton-honorato-a5586215a/"
+              className="footer__social-link"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="LinkedIn"
+            >
+              <Linkedin className="footer__social-icon" />
+            </a>
+          </div>
 
-        <div className="footer__social">
-          <a
-            href="https://www.instagram.com/cleytin_1/"
-            className="home__social-icon"
-            target="_blank"
-          >
-            <Instagram className="footer__social-link" />
-          </a>
-          <a
-            href="https://github.com/Cleyton-Honorato"
-            className="home__social-icon"
-            target="_blank"
-          >
-            <Github className="footer__social-link" />
-          </a>
-          <a
-            href="https://www.linkedin.com/in/cleyton-honorato-a5586215a/"
-            className="home__social-icon"
-            target="_blank"
-          >
-            <Linkedin className="footer__social-link" />
-          </a>
+          <div className="footer__bottom">
+            <span className="footer__copy">
+              Feito com <Heart className="footer__heart" /> por Cleyton Honorato
+            </span>
+          </div>
         </div>
-
-        <span className="footer__copy">
-          &#169; Crypticalcoder. All rigths reserved
-        </span>
       </div>
     </footer>
   );

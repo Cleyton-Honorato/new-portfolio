@@ -33,8 +33,8 @@ function App() {
         <Qualifications />
         <SectionDivider />
         <Contact />
-        <Footer />
       </main>
+      <Footer />
     </>
   );
 }
