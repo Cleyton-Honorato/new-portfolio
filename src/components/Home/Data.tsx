@@ -1,11 +1,11 @@
-import { HandIcon } from "../Icons";
+import avatar from "../../assets/avatar-removebg.png";
 
 export default function Data() {
   return (
     <div className="home__data">
       <h1 className="home__title">
         Cleyton Honorato
-        <HandIcon />
+        <img src={avatar} alt="Cleyton Honorato" className="home__avatar" />
       </h1>
       <h3 className="home__subtitle">FullStack Developer</h3>
       <p className="home__description">

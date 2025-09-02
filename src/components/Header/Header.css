@@ -19,6 +19,21 @@
 .nav__toggle {
   color: var(--title-color);
   font-weight: var(--font-medium);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nav__logo-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  transition: all 0.3s ease;
+}
+
+.nav__logo:hover .nav__logo-avatar {
+  transform: scale(1.1);
 }
 
 .nav__list {
@@ -106,6 +121,11 @@
     cursor: pointer;
   }
 
+  .nav__logo-avatar {
+    width: 28px;
+    height: 28px;
+  }
+
   .nav__icon,
   .nav__close,
   .nav__toggle {
@@ -121,5 +141,10 @@
 
   .nav__list {
     column-gap: 0;
+  }
+
+  .nav__logo-avatar {
+    width: 24px;
+    height: 24px;
   }
 }

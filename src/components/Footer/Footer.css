@@ -32,12 +32,13 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem 2rem 1.5rem;
+  width: 100%;
 }
 
 .footer__content {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   gap: 1.5rem;
   position: relative;
   z-index: 2;
@@ -58,6 +59,7 @@
 /* Header do footer */
 .footer__header {
   text-align: center;
+  width: 100%;
 }
 
 .footer__title {
@@ -82,10 +84,19 @@
   font-weight: 400;
 }
 
+/* Seção social com referência lateral */
+.footer__social-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0;
+  padding: 0 1rem;
+}
+
 /* Redes sociais */
 .footer__social {
   display: flex;
-  justify-content: center;
   gap: 1.2rem;
 }
 
@@ -143,6 +154,52 @@
   position: relative;
 }
 
+/* Referência sutil à BolaMarcada */
+.footer__project-reference {
+  display: flex;
+  align-items: center;
+}
+
+.footer__project-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-color);
+  text-decoration: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  opacity: 0.7;
+  border: 1px solid transparent;
+}
+
+.footer__project-link:hover {
+  opacity: 1;
+  background: rgba(0, 102, 255, 0.05);
+  border-color: rgba(0, 102, 255, 0.1);
+  transform: translateY(-1px);
+}
+
+.footer__project-logo {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.footer__project-link:hover .footer__project-logo {
+  transform: scale(1.1);
+}
+
+.footer__project-text {
+  color: var(--text-color);
+  font-weight: 500;
+  font-size: 0.8rem;
+}
+
 /* Rodapé inferior */
 .footer__bottom {
   display: flex;
@@ -194,6 +251,19 @@
     gap: 1.3rem;
   }
 
+  .footer__social-section {
+    max-width: 100%;
+  }
+
+  .footer__project-logo {
+    width: 18px;
+    height: 18px;
+  }
+
+  .footer__project-text {
+    font-size: 0.75rem;
+  }
+
   .footer__social {
     gap: 1rem;
   }
@@ -229,6 +299,26 @@
 
   .footer__subtitle {
     font-size: 0.8rem;
+  }
+
+  .footer__social-section {
+    max-width: 100%;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .footer__project-logo {
+    width: 16px;
+    height: 16px;
+  }
+
+  .footer__project-text {
+    font-size: 0.7rem;
+  }
+
+  .footer__project-link {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.75rem;
   }
 
   .footer__social {
@@ -271,6 +361,24 @@
 
   .footer__title {
     font-size: 1.2rem;
+  }
+
+  .footer__social-section {
+    max-width: 100%;
+  }
+
+  .footer__project-logo {
+    width: 14px;
+    height: 14px;
+  }
+
+  .footer__project-text {
+    font-size: 0.65rem;
+  }
+
+  .footer__project-link {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.7rem;
   }
 
   .footer__subtitle {

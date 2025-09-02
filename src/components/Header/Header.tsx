@@ -8,6 +8,8 @@ import {
   LayoutGrid,
 } from "lucide-react";
 
+import avatar from "../../assets/avatar-removebg.png";
+
 import "./Header.css";
 import { useState } from "react";
 
@@ -18,7 +20,8 @@ export function Header() {
     <header className="header">
       <nav className="nav container">
         <a href="index.html" className="nav__logo">
-          Cleyton
+          Cleyton{" "}
+          <img src={avatar} alt="Cleyton" className="nav__logo-avatar" />
         </a>
 
         <div className={showMenu ? "nav__menu show-menu" : "nav__menu"}>
