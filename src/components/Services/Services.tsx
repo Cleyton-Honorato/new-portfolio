@@ -1,19 +1,29 @@
 import { useState } from "react";
-import {
-  X,
-  ExternalLink,
-  Github,
-  Globe,
-  Smartphone,
-  Code,
-  Palette,
-} from "lucide-react";
+import { X, ExternalLink, Github, Globe } from "lucide-react";
 
 import "./Services.css";
 
 // Importando as imagens
 import logo from "../../assets/wallpaper.png";
 import brand from "../../assets/brand.png";
+import firebank from "../../assets/firebanking.svg";
+
+// Interface para os projetos
+interface Project {
+  id: number;
+  title: string;
+  subtitle: string;
+  image: string;
+  background?: string;
+  description: string;
+  features: string[];
+  technologies: string[];
+  links: {
+    demo: string;
+    github: string;
+    website: string;
+  };
+}
 
 export function Services() {
   const [activeModal, setActiveModal] = useState<number | null>(null);
@@ -26,56 +36,97 @@ export function Services() {
     setActiveModal(null);
   };
 
-  const projects = [
-    {
-      id: 1,
-      title: "BolaMarcada",
-      subtitle: "Seu SAAS de Gestão Esportiva",
-      icon: <img src={brand} alt="BolaMarcada" className="brand" />,
-      description:
-        "Ideal para gestão de arenas esportivas, plataforma desenvolvida para otimizar a administração de quadras esportivas, oferecendo um conjunto completo de ferramentas para agendamento online, controle financeiro, gestão de pagamentos e envio de notificações automatizadas. O sistema tem como objetivo simplificar a rotina de gestores, centralizando operações em um ambiente digital seguro e eficiente, garantindo maior organização, praticidade e melhoria na experiência dos clientes.",
-      features: [
-        "Gestão completa de times e jogadores",
-        "Organização de campeonatos e torneios",
-        "Sistema de pontuação e rankings",
-        "Dashboard interativo com estatísticas",
-        "App mobile para acompanhamento em tempo real",
-      ],
-      technologies: ["React", "Node.js", "PostgreSQL", "React Native", "AWS"],
-      links: {
-        demo: "https://bolamarcada.github.io/landingpage/",
-        github: "https://github.com/bolamarcada",
-        website: "https://bolamarcada.github.io/landingpage/",
-      },
-      isMainProject: true,
-      image: logo,
+  // Função utilitária para criar backgrounds personalizados
+  const createBackground = (
+    type: "gradient" | "solid" | "image",
+    colors?: string[],
+    imageUrl?: string,
+    direction: string = "90deg"
+  ) => {
+    switch (type) {
+      case "gradient":
+        if (colors && colors.length > 0) {
+          return `linear-gradient(${direction}, ${colors.join(", ")})`;
+        }
+        return `linear-gradient(${direction}, #667eea, #764ba2)`;
+      case "solid":
+        return colors?.[0] || "#667eea";
+      case "image":
+        return `url(${imageUrl}) center/cover`;
+      default:
+        return "linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03))";
+    }
+  };
+
+  // Projeto Principal - BolaMarcada
+  const mainProject = {
+    id: 1,
+    title: "BolaMarcada",
+    subtitle: "Seu SAAS de Gestão Esportiva",
+    icon: <img src={brand} alt="BolaMarcada" className="brand" />,
+    description:
+      "Ideal para gestão de arenas esportivas, plataforma desenvolvida para otimizar a administração de quadras esportivas, oferecendo um conjunto completo de ferramentas para agendamento online, controle financeiro, gestão de pagamentos e envio de notificações automatizadas. O sistema tem como objetivo simplificar a rotina de gestores, centralizando operações em um ambiente digital seguro e eficiente, garantindo maior organização, praticidade e melhoria na experiência dos clientes.",
+    features: [
+      "Gestão completa de times e jogadores",
+      "Organização de campeonatos e torneios",
+      "Sistema de pontuação e rankings",
+      "Dashboard interativo com estatísticas",
+      "App mobile para acompanhamento em tempo real",
+    ],
+    technologies: ["React", "Node.js", "PostgreSQL", "React Native", "AWS"],
+    links: {
+      demo: "https://bolamarcada.github.io/landingpage/",
+      github: "https://github.com/bolamarcada",
+      website: "https://bolamarcada.github.io/landingpage/",
     },
+    image: logo,
+  };
+
+  // Projetos Secundários - Cards diferentes
+  const secondaryProjects: Project[] = [
     {
       id: 2,
-      title: "E-commerce Premium",
-      subtitle: "Loja Virtual Completa",
-      icon: <Globe className="services__icon" />,
+      title: "Fire Banking",
+      subtitle: "Onboard de Captação de Clientes",
+      image: firebank,
+      background: createBackground("gradient", [
+        "rgba(28, 31, 35, 1)",
+        "#cc6942 100%",
+      ]),
       description:
-        "Plataforma de e-commerce desenvolvida com foco em conversão e experiência do usuário, incluindo sistema de pagamentos e gestão de estoque.",
+        "Sistema de onboarding completo para captação de clientes bancários, incluindo cadastro, validação de documentos, autenticação segura e processo de aprovação. Desenvolvido com foco em conversão e experiência do usuário.",
       features: [
-        "Catálogo de produtos com filtros avançados",
-        "Sistema de carrinho e checkout otimizado",
-        "Integração com gateways de pagamento",
-        "Painel administrativo completo",
-        "Sistema de avaliações e reviews",
+        "Sistema de cadastro com validação de documentos",
+        "Autenticação e login seguro com 2FA",
+        "Processo de onboarding otimizado para conversão",
+        "Validação em tempo real de dados pessoais",
+        "Dashboard de acompanhamento do processo",
       ],
-      technologies: ["Next.js", "TypeScript", "Stripe", "MongoDB", "AWS"],
+      technologies: [
+        "React",
+        "Next.js",
+        "TypeScript",
+        "Node.js",
+        "PostgreSQL",
+        "AWS",
+      ],
       links: {
-        demo: "https://ecommerce-demo.com",
-        github: "https://github.com/project/ecommerce",
-        website: "https://ecommerce-website.com",
+        demo: "https://firebanking-demo.com",
+        github: "https://github.com/project/firebanking",
+        website: "https://firebanking.com",
       },
     },
     {
       id: 3,
       title: "App Mobile - Delivery",
       subtitle: "Aplicativo de Entrega",
-      icon: <Smartphone className="services__icon" />,
+      image: brand,
+      background: createBackground(
+        "gradient",
+        ["#4ecdc4 30%", "#44a08d 80%"],
+        undefined,
+        "135deg"
+      ),
       description:
         "Aplicativo mobile nativo para delivery de alimentos, com sistema de rastreamento em tempo real e interface intuitiva.",
       features: [
@@ -102,7 +153,13 @@ export function Services() {
       id: 4,
       title: "Dashboard Analytics",
       subtitle: "Painel de Análise de Dados",
-      icon: <Code className="services__icon" />,
+      image: "../../assets/work2.jpg",
+      background: createBackground(
+        "gradient",
+        ["#667eea 0%", "#764ba2 70%"],
+        undefined,
+        "45deg"
+      ),
       description:
         "Dashboard interativo para análise de dados empresariais, com gráficos dinâmicos e relatórios personalizáveis.",
       features: [
@@ -123,7 +180,8 @@ export function Services() {
       id: 5,
       title: "Landing Page Premium",
       subtitle: "Site Institucional Moderno",
-      icon: <Palette className="services__icon" />,
+      image: "../../assets/work3.jpg",
+      background: createBackground("solid", ["#6366f1"]), // Exemplo de cor sólida
       description:
         "Landing page moderna e otimizada para conversão, com design responsivo e foco em SEO e performance.",
       features: [
@@ -170,118 +228,115 @@ export function Services() {
           <div className="services__grid">
             {/* Projeto Principal - BolaMarcada */}
             <div className="services__main-project">
-              {projects
-                .filter((project) => project.isMainProject)
-                .map((project) => (
-                  <div
-                    key={project.id}
-                    className="services__card services__card--main"
-                  >
-                    <div className="services__card-badge">
-                      <span>Projeto Principal</span>
-                    </div>
+              <div className="services__card services__card--main">
+                <div className="services__card-badge">
+                  <span>Projeto Principal</span>
+                </div>
 
-                    <div className="services__card-header">
-                      <div className="services__card-icon-wrapper">
-                        {project.icon}
-                      </div>
-                      <div className="services__card-info">
-                        <h3 className="services__card-title">
-                          {project.title}
-                        </h3>
-                        <p className="services__card-subtitle">
-                          {project.subtitle}
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="services__card-image">
-                      <img src={project.image} alt={project.title} />
-                    </div>
-
-                    <p className="services__card-description">
-                      {project.description}
-                    </p>
-
-                    <div className="services__card-technologies">
-                      {project.technologies.map((tech, techIndex) => (
-                        <span key={techIndex} className="services__tech-tag">
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-
-                    <button
-                      className="services__card-button"
-                      onClick={() => {
-                        if (project.isMainProject) {
-                          window.open(
-                            project.links.website,
-                            "_blank",
-                            "noopener,noreferrer"
-                          );
-                        } else {
-                          openModal(project.id);
-                        }
-                      }}
-                      title={
-                        project.isMainProject
-                          ? "Visitar site da BolaMarcada"
-                          : "Ver detalhes do projeto"
-                      }
-                    >
-                      <span>
-                        {project.isMainProject
-                          ? "Visitar Site"
-                          : "Ver Detalhes"}
-                      </span>
-                      <ExternalLink className="services__button-icon" />
-                    </button>
+                <div className="services__card-header">
+                  <div className="services__card-icon-wrapper">
+                    {mainProject.icon}
                   </div>
-                ))}
+                  <div className="services__card-info">
+                    <h3 className="services__card-title">
+                      {mainProject.title}
+                    </h3>
+                    <p className="services__card-subtitle">
+                      {mainProject.subtitle}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="services__card-image">
+                  <img src={mainProject.image} alt={mainProject.title} />
+                </div>
+
+                <p className="services__card-description">
+                  {mainProject.description}
+                </p>
+
+                <div className="services__card-technologies">
+                  {mainProject.technologies.map((tech, techIndex) => (
+                    <span key={techIndex} className="services__tech-tag">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
+                <button
+                  className="services__card-button"
+                  onClick={() => {
+                    window.open(
+                      mainProject.links.website,
+                      "_blank",
+                      "noopener,noreferrer"
+                    );
+                  }}
+                  title="Visitar site da BolaMarcada"
+                >
+                  <span>Visitar Site</span>
+                  <ExternalLink className="services__button-icon" />
+                </button>
+              </div>
             </div>
 
-            {/* Demais Projetos */}
+            {/* Demais Projetos - Cards Secundários */}
             <div className="services__other-projects">
-              {projects
-                .filter((project) => !project.isMainProject)
-                .map((project) => (
-                  <div key={project.id} className="services__card">
-                    <div className="services__card-header">
-                      <div className="services__card-icon-wrapper">
-                        {project.icon}
-                      </div>
-                      <div className="services__card-info">
-                        <h3 className="services__card-title">
-                          {project.title}
-                        </h3>
-                        <p className="services__card-subtitle">
-                          {project.subtitle}
-                        </p>
-                      </div>
-                    </div>
-
-                    <p className="services__card-description">
-                      {project.description}
-                    </p>
-
-                    <div className="services__card-technologies">
-                      {project.technologies.map((tech, techIndex) => (
-                        <span key={techIndex} className="services__tech-tag">
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-
-                    <button
-                      className="services__card-button"
-                      onClick={() => openModal(project.id)}
-                    >
-                      <span>Ver Detalhes</span>
-                      <ExternalLink className="services__button-icon" />
-                    </button>
+              {secondaryProjects.map((project) => (
+                <div key={project.id} className="services__card-secondary">
+                  {/* Imagem do projeto */}
+                  <div
+                    className="services__card-secondary-image"
+                    style={{
+                      background:
+                        project.background ||
+                        "linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03))",
+                    }}
+                  >
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="services__card-secondary-img"
+                    />
                   </div>
-                ))}
+
+                  {/* Título e subtítulo */}
+                  <div className="services__card-secondary-header">
+                    <h3 className="services__card-secondary-title">
+                      {project.title}
+                    </h3>
+                    <p className="services__card-secondary-subtitle">
+                      {project.subtitle}
+                    </p>
+                  </div>
+
+                  {/* Descrição */}
+                  <p className="services__card-secondary-description">
+                    {project.description}
+                  </p>
+
+                  {/* Tecnologias */}
+                  <div className="services__card-secondary-technologies">
+                    {project.technologies.map((tech, techIndex) => (
+                      <span
+                        key={techIndex}
+                        className="services__secondary-tech-tag"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Botão */}
+                  <button
+                    className="services__card-secondary-button"
+                    onClick={() => openModal(project.id)}
+                  >
+                    <span>Ver Detalhes</span>
+                    <ExternalLink className="services__secondary-button-icon" />
+                  </button>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -296,34 +351,43 @@ export function Services() {
                 <X className="services__modal-close-icon" />
               </button>
 
-              {projects.find((p) => p.id === activeModal) && (
+              {secondaryProjects.find((p) => p.id === activeModal) && (
                 <>
                   <div className="services__modal-header">
                     <div className="services__modal-icon-wrapper">
-                      {projects.find((p) => p.id === activeModal)?.icon}
+                      <img
+                        src={
+                          secondaryProjects.find((p) => p.id === activeModal)
+                            ?.image
+                        }
+                        alt={
+                          secondaryProjects.find((p) => p.id === activeModal)
+                            ?.title
+                        }
+                        className="services__modal-icon"
+                      />
                     </div>
                     <div>
                       <h3 className="services__modal-title">
-                        {projects.find((p) => p.id === activeModal)?.title}
+                        {
+                          secondaryProjects.find((p) => p.id === activeModal)
+                            ?.title
+                        }
                       </h3>
                       <p className="services__modal-subtitle">
-                        {projects.find((p) => p.id === activeModal)?.subtitle}
+                        {
+                          secondaryProjects.find((p) => p.id === activeModal)
+                            ?.subtitle
+                        }
                       </p>
                     </div>
                   </div>
 
-                  {projects.find((p) => p.id === activeModal)
-                    ?.isMainProject && (
-                    <div className="services__modal-image">
-                      <img
-                        src={projects.find((p) => p.id === activeModal)?.image}
-                        alt={projects.find((p) => p.id === activeModal)?.title}
-                      />
-                    </div>
-                  )}
-
                   <p className="services__modal-description">
-                    {projects.find((p) => p.id === activeModal)?.description}
+                    {
+                      secondaryProjects.find((p) => p.id === activeModal)
+                        ?.description
+                    }
                   </p>
 
                   <div className="services__modal-section">
@@ -331,7 +395,7 @@ export function Services() {
                       Funcionalidades Principais
                     </h4>
                     <ul className="services__modal-features">
-                      {projects
+                      {secondaryProjects
                         .find((p) => p.id === activeModal)
                         ?.features.map((feature, index) => (
                           <li key={index} className="services__modal-feature">
@@ -349,7 +413,7 @@ export function Services() {
                       Tecnologias Utilizadas
                     </h4>
                     <div className="services__modal-technologies">
-                      {projects
+                      {secondaryProjects
                         .find((p) => p.id === activeModal)
                         ?.technologies.map((tech, index) => (
                           <span
@@ -365,7 +429,8 @@ export function Services() {
                   <div className="services__modal-links">
                     <a
                       href={
-                        projects.find((p) => p.id === activeModal)?.links.demo
+                        secondaryProjects.find((p) => p.id === activeModal)
+                          ?.links.demo
                       }
                       target="_blank"
                       rel="noopener noreferrer"
@@ -376,7 +441,8 @@ export function Services() {
                     </a>
                     <a
                       href={
-                        projects.find((p) => p.id === activeModal)?.links.github
+                        secondaryProjects.find((p) => p.id === activeModal)
+                          ?.links.github
                       }
                       target="_blank"
                       rel="noopener noreferrer"
@@ -387,8 +453,8 @@ export function Services() {
                     </a>
                     <a
                       href={
-                        projects.find((p) => p.id === activeModal)?.links
-                          .website
+                        secondaryProjects.find((p) => p.id === activeModal)
+                          ?.links.website
                       }
                       target="_blank"
                       rel="noopener noreferrer"
