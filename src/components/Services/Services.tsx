@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { X, ExternalLink, Github, Globe } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 
 import "./Services.css";
 
@@ -7,6 +6,8 @@ import "./Services.css";
 import logo from "../../assets/wallpaper.png";
 import brand from "../../assets/brand.png";
 import firebank from "../../assets/firebanking.svg";
+import trilogo from "../../assets/trilogo.png";
+import tijuca from "../../assets/tijuca.png";
 
 // Interface para os projetos
 interface Project {
@@ -26,16 +27,6 @@ interface Project {
 }
 
 export function Services() {
-  const [activeModal, setActiveModal] = useState<number | null>(null);
-
-  const openModal = (index: number) => {
-    setActiveModal(index);
-  };
-
-  const closeModal = () => {
-    setActiveModal(null);
-  };
-
   // Função utilitária para criar backgrounds personalizados
   const createBackground = (
     type: "gradient" | "solid" | "image",
@@ -118,30 +109,27 @@ export function Services() {
     },
     {
       id: 3,
-      title: "App Mobile - Delivery",
-      subtitle: "Aplicativo de Entrega",
-      image: brand,
-      background: createBackground(
-        "gradient",
-        ["#4ecdc4 30%", "#44a08d 80%"],
-        undefined,
-        "135deg"
-      ),
+      title: "Trílogo",
+      subtitle: "Software de Manutenção de Predial",
+      image: trilogo,
+      background: createBackground("solid", ["#4C12A1"]),
       description:
-        "Aplicativo mobile nativo para delivery de alimentos, com sistema de rastreamento em tempo real e interface intuitiva.",
+        "Contribuí para o desenvolvimento de funcionalidades como o módulo de tickets públicos e melhorias em processos internos. Atuei na realização de testes unitários, participei do planejamento de sprints junto ao Scrum Master e colaborei para a entrega de soluções alinhadas às necessidades do negócio.",
       features: [
-        "Interface nativa para iOS e Android",
-        "Sistema de geolocalização e rastreamento",
-        "Chat integrado entre cliente e entregador",
-        "Sistema de notificações push",
-        "Integração com mapas e rotas",
+        "Módulo de tickets públicos",
+        "Melhorias em processos internos",
+        "Testes unitários",
+        "Planejamento de sprints",
+        "Sistema de geolocalização para mapa de calor dos tickets",
       ],
       technologies: [
-        "React Native",
-        "Firebase",
+        "React JS",
+        "Vue JS",
         "Google Maps API",
-        "Redux",
-        "Expo",
+        "Redux Toolkit",
+        "Node JS",
+        "Docker",
+        "TypeScript",
       ],
       links: {
         demo: "https://app-demo.com",
@@ -151,17 +139,12 @@ export function Services() {
     },
     {
       id: 4,
-      title: "Dashboard Analytics",
-      subtitle: "Painel de Análise de Dados",
-      image: "../../assets/work2.jpg",
-      background: createBackground(
-        "gradient",
-        ["#667eea 0%", "#764ba2 70%"],
-        undefined,
-        "45deg"
-      ),
+      title: "Tijuca Alimentos",
+      subtitle: "",
+      image: tijuca,
+      background: createBackground("solid", ["#003266"]),
       description:
-        "Dashboard interativo para análise de dados empresariais, com gráficos dinâmicos e relatórios personalizáveis.",
+        "Liderei a equipe de desenvolvimento mobile na criação de um aplicativo em React Native para gestão de vendas externas. O sistema permitia aos representantes realizar pedidos em campo, mesmo offline, com sincronização automática ao sistema interno da empresa. Esse projeto trouxe maior agilidade ao processo comercial, redução de erros e melhoria na experiência dos vendedores.",
       features: [
         "Gráficos interativos e responsivos",
         "Filtros avançados de dados",
@@ -169,39 +152,17 @@ export function Services() {
         "Alertas e notificações automáticas",
         "Integração com múltiplas fontes de dados",
       ],
-      technologies: ["Vue.js", "D3.js", "Python", "PostgreSQL", "Chart.js"],
+      technologies: [
+        "React Native",
+        "styled-components",
+        "PHP",
+        "MySQL",
+        "RealmDB",
+      ],
       links: {
         demo: "https://dashboard-demo.com",
         github: "https://github.com/project/dashboard",
         website: "https://dashboard-website.com",
-      },
-    },
-    {
-      id: 5,
-      title: "Landing Page Premium",
-      subtitle: "Site Institucional Moderno",
-      image: "../../assets/work3.jpg",
-      background: createBackground("solid", ["#6366f1"]), // Exemplo de cor sólida
-      description:
-        "Landing page moderna e otimizada para conversão, com design responsivo e foco em SEO e performance.",
-      features: [
-        "Design responsivo e moderno",
-        "Otimização para SEO e Core Web Vitals",
-        "Formulários de captura otimizados",
-        "Integração com Google Analytics",
-        "Sistema de blog integrado",
-      ],
-      technologies: [
-        "React",
-        "Tailwind CSS",
-        "Vercel",
-        "Contentful",
-        "Framer Motion",
-      ],
-      links: {
-        demo: "https://landing-demo.com",
-        github: "https://github.com/project/landing",
-        website: "https://landing-website.com",
       },
     },
   ];
@@ -326,150 +287,12 @@ export function Services() {
                       </span>
                     ))}
                   </div>
-
-                  {/* Botão */}
-                  <button
-                    className="services__card-secondary-button"
-                    onClick={() => openModal(project.id)}
-                  >
-                    <span>Ver Detalhes</span>
-                    <ExternalLink className="services__secondary-button-icon" />
-                  </button>
                 </div>
               ))}
             </div>
           </div>
         </div>
       </div>
-
-      {/* Modal */}
-      {activeModal && (
-        <div className="services__modal-overlay" onClick={closeModal}>
-          <div className="services__modal" onClick={(e) => e.stopPropagation()}>
-            <div className="services__modal-content">
-              <button className="services__modal-close" onClick={closeModal}>
-                <X className="services__modal-close-icon" />
-              </button>
-
-              {secondaryProjects.find((p) => p.id === activeModal) && (
-                <>
-                  <div className="services__modal-header">
-                    <div className="services__modal-icon-wrapper">
-                      <img
-                        src={
-                          secondaryProjects.find((p) => p.id === activeModal)
-                            ?.image
-                        }
-                        alt={
-                          secondaryProjects.find((p) => p.id === activeModal)
-                            ?.title
-                        }
-                        className="services__modal-icon"
-                      />
-                    </div>
-                    <div>
-                      <h3 className="services__modal-title">
-                        {
-                          secondaryProjects.find((p) => p.id === activeModal)
-                            ?.title
-                        }
-                      </h3>
-                      <p className="services__modal-subtitle">
-                        {
-                          secondaryProjects.find((p) => p.id === activeModal)
-                            ?.subtitle
-                        }
-                      </p>
-                    </div>
-                  </div>
-
-                  <p className="services__modal-description">
-                    {
-                      secondaryProjects.find((p) => p.id === activeModal)
-                        ?.description
-                    }
-                  </p>
-
-                  <div className="services__modal-section">
-                    <h4 className="services__modal-section-title">
-                      Funcionalidades Principais
-                    </h4>
-                    <ul className="services__modal-features">
-                      {secondaryProjects
-                        .find((p) => p.id === activeModal)
-                        ?.features.map((feature, index) => (
-                          <li key={index} className="services__modal-feature">
-                            <div className="services__modal-feature-icon">
-                              ✓
-                            </div>
-                            <span>{feature}</span>
-                          </li>
-                        ))}
-                    </ul>
-                  </div>
-
-                  <div className="services__modal-section">
-                    <h4 className="services__modal-section-title">
-                      Tecnologias Utilizadas
-                    </h4>
-                    <div className="services__modal-technologies">
-                      {secondaryProjects
-                        .find((p) => p.id === activeModal)
-                        ?.technologies.map((tech, index) => (
-                          <span
-                            key={index}
-                            className="services__modal-tech-tag"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                    </div>
-                  </div>
-
-                  <div className="services__modal-links">
-                    <a
-                      href={
-                        secondaryProjects.find((p) => p.id === activeModal)
-                          ?.links.demo
-                      }
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="services__modal-link"
-                    >
-                      <Globe className="services__modal-link-icon" />
-                      <span>Ver Demo</span>
-                    </a>
-                    <a
-                      href={
-                        secondaryProjects.find((p) => p.id === activeModal)
-                          ?.links.github
-                      }
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="services__modal-link"
-                    >
-                      <Github className="services__modal-link-icon" />
-                      <span>Código Fonte</span>
-                    </a>
-                    <a
-                      href={
-                        secondaryProjects.find((p) => p.id === activeModal)
-                          ?.links.website
-                      }
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="services__modal-link"
-                    >
-                      <ExternalLink className="services__modal-link-icon" />
-                      <span>Website</span>
-                    </a>
-                  </div>
-                </>
-              )}
-            </div>
-          </div>
-        </div>
-      )}
     </section>
   );
 }
