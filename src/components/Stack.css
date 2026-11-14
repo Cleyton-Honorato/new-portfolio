@@ -1,0 +1,182 @@
+/* Group shades — all from the fixed palette */
+.element--front {
+  --el: var(--purple-800);
+}
+.element--mobile {
+  --el: var(--purple-500);
+}
+.element--back {
+  --el: var(--purple-900);
+}
+.element--infra {
+  --el: var(--purple-700);
+}
+
+/* ---------- Tile ---------- */
+.element {
+  position: relative;
+  display: grid;
+  border-radius: 14px;
+  background: var(--sheet);
+  color: var(--text);
+  box-shadow: 0 18px 30px -24px rgba(20, 0, 40, 0.8);
+  overflow: hidden;
+  isolation: isolate;
+  transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease), color 0.3s ease;
+}
+
+/* Purple fill that rises from the bottom on hover */
+.element::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(160deg, var(--el), color-mix(in srgb, var(--el) 70%, #000));
+  transform: translateY(101%);
+  transition: transform 0.45s var(--ease);
+}
+
+/* Colored strip on the left edge identifies the group */
+.element::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--el);
+}
+
+.element--md {
+  aspect-ratio: 1;
+  padding: 0.7rem 0.75rem 0.65rem 0.95rem;
+  grid-template-rows: auto 1fr auto;
+}
+
+.element__number {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--text-subtle);
+  transition: color 0.3s ease;
+}
+
+.element__symbol {
+  align-self: center;
+  font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--el);
+  transition: color 0.3s ease, transform 0.4s var(--ease);
+}
+
+.element__name {
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--text-muted);
+  transition: color 0.3s ease;
+}
+
+.element--md:hover {
+  transform: translateY(-6px) rotate(-2deg);
+  box-shadow: 0 26px 40px -22px rgba(20, 0, 40, 0.9);
+}
+
+.element--md:hover::before {
+  transform: none;
+}
+
+.element--md:hover .element__symbol,
+.element--md:hover .element__name,
+.element--md:hover .element__number {
+  color: #fff;
+}
+
+.element--md:hover .element__symbol {
+  transform: scale(1.12);
+}
+
+/* ---------- Section ---------- */
+.stack {
+  margin-top: var(--section-space);
+}
+
+.stack__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem 2rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.stack__head .section-head {
+  margin-bottom: 0;
+}
+
+.stack__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+}
+
+.stack__legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid var(--panel-card-border);
+  background: var(--panel-card);
+  color: var(--on-panel);
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.stack__legend-item:hover,
+.stack__legend-item.is-active {
+  background: #fff;
+  color: var(--purple-800);
+}
+
+.stack__legend-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 3px;
+  background: var(--el);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.7);
+}
+
+.stack__table {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(112px, 1fr));
+  gap: 0.75rem;
+  list-style: none;
+}
+
+.stack__table li {
+  transition: opacity 0.3s ease, filter 0.3s ease;
+}
+
+.stack__table li.is-dimmed {
+  opacity: 0.25;
+  filter: saturate(0.4);
+}
+
+@media (max-width: 520px) {
+  .stack__table {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.5rem;
+  }
+
+  .element--md {
+    padding: 0.55rem 0.55rem 0.5rem 0.75rem;
+  }
+
+  .element__name {
+    font-size: 0.64rem;
+  }
+}

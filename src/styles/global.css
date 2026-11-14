@@ -1,0 +1,388 @@
+/* =========================================================
+   Tokens — palette from the reference layout
+   #820AD1 · #7F26BA · #A232EB · #9B30C2 · #AC1FDE · #393939
+   ========================================================= */
+:root {
+  --font: "Sora", system-ui, -apple-system, sans-serif;
+
+  --purple-900: #7f26ba;
+  --purple-800: #820ad1;
+  --purple-700: #9b30c2;
+  --purple-600: #a232eb;
+  --purple-500: #ac1fde;
+  --graphite: #393939;
+
+  --page-bg: linear-gradient(172deg, #6a07ad 0%, #820ad1 30%, #9b30c2 68%, #ac1fde 100%);
+  --sheet: #ffffff;
+  --sheet-alt: #f7f2fc;
+  --text: var(--graphite);
+  --text-muted: #625b6c;
+  --text-subtle: #958da0;
+  --border: #ece4f4;
+  --border-strong: #ddd0ec;
+
+  --accent: var(--purple-800);
+  --accent-hover: var(--purple-900);
+  --accent-bright: var(--purple-600);
+  --accent-soft: rgba(130, 10, 209, 0.08);
+  --accent-contrast: #ffffff;
+
+  --panel-bg: linear-gradient(120deg, #a232eb 0%, #8b14d6 45%, #820ad1 100%);
+  --on-panel: #ffffff;
+  --on-panel-muted: rgba(255, 255, 255, 0.8);
+  --panel-card: rgba(255, 255, 255, 0.1);
+  --panel-card-border: rgba(255, 255, 255, 0.2);
+
+  --footer-bg: #2c0545;
+  --header-scrolled: rgba(106, 7, 173, 0.82);
+
+  --shadow-sheet: 0 30px 60px -30px rgba(40, 4, 66, 0.55);
+  --shadow-card: 0 24px 40px -24px rgba(57, 57, 57, 0.35);
+
+  --radius-sm: 8px;
+  --radius: 16px;
+  --radius-lg: 28px;
+
+  --container: 1120px;
+  --gutter: clamp(1.25rem, 5vw, 4.5rem);
+  --card-max: 1280px;
+  --page-gutter: clamp(0.75rem, 3vw, 2.5rem);
+  --card-gap: clamp(1rem, 2.5vw, 2rem);
+  --card-width: min(var(--card-max), calc(100% - var(--page-gutter) * 2));
+  --section-space: clamp(4.5rem, 9vw, 7.5rem);
+  --header-h: 76px;
+
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  color-scheme: light;
+}
+
+/* =========================================================
+   Base
+   ========================================================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-h) + 0.5rem);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: #6a07ad;
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+/* Fixed gradient behind everything (background-attachment: fixed is janky on mobile). */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: var(--page-bg);
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+::selection {
+  background: var(--purple-600);
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent-bright);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -100px;
+  z-index: 200;
+  padding: 0.6rem 1rem;
+  background: #fff;
+  color: var(--purple-800);
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+}
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* =========================================================
+   Layout: centered cards (white sheets and purple panels)
+   separated by the purple page background
+   ========================================================= */
+.sheet,
+.panel {
+  position: relative;
+  width: var(--card-width);
+  margin-inline: auto;
+  padding-block: var(--section-space);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sheet);
+}
+
+.sheet + .panel,
+.panel + .sheet,
+.sheet + .sheet,
+.panel + .panel {
+  margin-top: var(--card-gap);
+}
+
+.sheet {
+  background: var(--sheet);
+  color: var(--text);
+}
+
+.panel {
+  background: var(--panel-bg);
+  color: var(--on-panel);
+}
+
+.inner {
+  width: 100%;
+  max-width: calc(var(--container) + var(--gutter) * 2);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* =========================================================
+   Shared pieces
+   ========================================================= */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.panel .eyebrow {
+  color: var(--on-panel-muted);
+}
+
+.eyebrow::before {
+  content: "";
+  width: 1.75rem;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+}
+
+.section-head {
+  display: grid;
+  gap: 0.9rem;
+  margin-bottom: clamp(2.5rem, 5vw, 3.5rem);
+  max-width: 44rem;
+}
+
+.section-title {
+  font-weight: 700;
+  font-size: clamp(2rem, 4.4vw, 3.1rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+.sheet .section-title {
+  color: var(--accent);
+}
+
+.section-lead {
+  font-weight: 300;
+  font-size: clamp(1.15rem, 2vw, 1.55rem);
+  line-height: 1.4;
+  color: var(--text);
+  max-width: 34rem;
+}
+
+.panel .section-lead {
+  color: var(--on-panel-muted);
+}
+
+.hl {
+  color: var(--accent);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  height: 3rem;
+  padding-inline: 1.4rem;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 0.92rem;
+  white-space: nowrap;
+  transition: transform 0.25s var(--ease), background-color 0.2s ease,
+    border-color 0.2s ease, color 0.2s ease, box-shadow 0.25s ease;
+}
+
+.btn svg {
+  width: 1.05rem;
+  height: 1.05rem;
+  transition: transform 0.25s var(--ease);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn--primary {
+  background: var(--accent);
+  color: var(--accent-contrast);
+  box-shadow: 0 12px 24px -12px rgba(130, 10, 209, 0.7);
+}
+
+.btn--primary:hover {
+  background: var(--accent-hover);
+}
+
+.btn--primary:hover svg {
+  transform: translate(2px, -2px);
+}
+
+.btn--ghost {
+  border: 1.5px solid var(--border-strong);
+  color: var(--text);
+}
+
+.btn--ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.28rem 0.7rem;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 0.74rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.icon-btn {
+  display: inline-grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 999px;
+  border: 1.5px solid var(--border-strong);
+  color: var(--text-muted);
+  transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease,
+    transform 0.25s var(--ease);
+}
+
+.icon-btn svg {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+.icon-btn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  transform: translateY(-2px);
+}
+
+/* Icon buttons sitting on purple (header, panels, footer) */
+.icon-btn--on-purple {
+  border-color: rgba(255, 255, 255, 0.28);
+  color: #fff;
+}
+
+.icon-btn--on-purple:hover {
+  color: #fff;
+  border-color: #fff;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+/* Scroll reveal: content is visible by default; only the *hidden* state is styled,
+   so hover transforms keep working once an element has been revealed. */
+.js-reveal [data-reveal] {
+  transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.js-reveal [data-reveal]:not(.is-visible) {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+@media (max-width: 640px) {
+  .sheet,
+  .panel {
+    border-radius: 22px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .js-reveal [data-reveal]:not(.is-visible) {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

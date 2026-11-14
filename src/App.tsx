@@ -1,43 +1,36 @@
-import "./App.css";
+import { Header } from "./components/Header";
+import { Hero } from "./components/Hero";
+import { About } from "./components/About";
+import { Projects } from "./components/Projects";
+import { Journey } from "./components/Journey";
+import { Contact } from "./components/Contact";
+import { Footer } from "./components/Footer";
+import { Services } from "./components/Services";
+import { useReveal } from "./hooks/useReveal";
 
-import Header from "./components/Header";
-import Home from "./components/Home";
-import About from "./components/About";
-import Skills from "./components/Skills";
-import Services from "./components/Services";
-import Qualifications from "./components/Qualifications";
-import Contact from "./components/Contact";
-import Footer from "./components/Footer";
+export default function App() {
+  useReveal();
 
-// Componente de separação entre seções
-const SectionDivider = () => (
-  <div className="section-divider">
-    <div className="section-divider__line"></div>
-    <div className="section-divider__dot"></div>
-    <div className="section-divider__line"></div>
-  </div>
-);
-
-function App() {
   return (
     <>
+      <div className="orbs" aria-hidden="true">
+        <span />
+        <span />
+        <span />
+      </div>
+      <a href="#conteudo" className="skip-link">
+        Pular para o conteúdo
+      </a>
       <Header />
-      <main className="main">
-        <Home />
-        <SectionDivider />
+      <main id="conteudo">
+        <Hero />
         <About />
-        <SectionDivider />
-        <Skills />
-        <SectionDivider />
         <Services />
-        <SectionDivider />
-        <Qualifications />
-        <SectionDivider />
+        <Projects />
+        <Journey />
         <Contact />
       </main>
       <Footer />
     </>
   );
 }
-
-export default App;

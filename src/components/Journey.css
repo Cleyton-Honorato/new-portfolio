@@ -1,0 +1,176 @@
+.journey__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.25rem, 3vw, 2rem);
+}
+
+/* Timelines sit on translucent cards inside the purple panel */
+.timeline {
+  padding: clamp(1.25rem, 3vw, 2rem);
+  border-radius: var(--radius-lg);
+  background: var(--panel-card);
+  border: 1px solid var(--panel-card-border);
+}
+
+.timeline__heading {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.15rem;
+  font-weight: 600;
+  padding-bottom: 1.1rem;
+  border-bottom: 1px solid var(--panel-card-border);
+}
+
+.timeline__icon {
+  display: grid;
+  place-items: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 10px;
+  background: #fff;
+  color: var(--purple-800);
+}
+
+.timeline__icon svg {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+.timeline__list {
+  list-style: none;
+}
+
+.timeline__item {
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.1rem 0 1.1rem 1.4rem;
+}
+
+.timeline__item + .timeline__item {
+  border-top: 1px solid var(--panel-card-border);
+}
+
+.timeline__item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1.6rem;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  border: 1.5px solid var(--on-panel-muted);
+}
+
+.timeline__item--current::before {
+  border-color: #fff;
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.2);
+}
+
+.timeline__title {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.timeline__org {
+  color: var(--on-panel-muted);
+  font-size: 0.88rem;
+  font-weight: 300;
+}
+
+.timeline__period {
+  flex: none;
+  font-size: 0.78rem;
+  color: var(--on-panel-muted);
+}
+
+.timeline__item--current .timeline__period {
+  color: #fff;
+  font-weight: 600;
+}
+
+@media (max-width: 760px) {
+  .journey__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .timeline__item {
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+}
+
+/* ---------- Motion ---------- */
+/* Vertical line that draws itself as the list scrolls through the viewport */
+.timeline__list {
+  position: relative;
+}
+
+.timeline__list::before,
+.timeline__list::after {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: 1.75rem;
+  bottom: 1.75rem;
+  width: 1.5px;
+  border-radius: 2px;
+}
+
+.timeline__list::before {
+  background: var(--panel-card-border);
+}
+
+.timeline__list::after {
+  background: linear-gradient(#fff, rgba(255, 255, 255, 0.4));
+  transform-origin: top;
+  transform: scaleY(var(--progress, 0));
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+}
+
+.timeline__item::before {
+  z-index: 1;
+  background: var(--purple-800);
+  transition: transform 0.4s var(--ease), background-color 0.3s ease;
+}
+
+.timeline__item:hover::before {
+  transform: scale(1.6);
+  background: #fff;
+}
+
+.timeline__item {
+  transition: transform 0.35s var(--ease);
+}
+
+.timeline__item:hover {
+  transform: translateX(6px);
+}
+
+.timeline__item--current::before {
+  animation: current-pulse 2.2s ease-out infinite;
+}
+
+@keyframes current-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.55);
+  }
+  100% {
+    box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+  }
+}
+
+.timeline {
+  transition: background-color 0.3s ease, border-color 0.3s ease, opacity 0.8s var(--ease),
+    transform 0.8s var(--ease);
+}
+
+.timeline:hover {
+  background: rgba(255, 255, 255, 0.14);
+}

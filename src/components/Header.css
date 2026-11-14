@@ -1,0 +1,233 @@
+.header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 100;
+  height: var(--header-h);
+  color: #fff;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.header--scrolled {
+  background: var(--header-scrolled);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  box-shadow: 0 10px 30px -20px rgba(0, 0, 0, 0.6);
+}
+
+.header__inner {
+  height: 100%;
+  width: var(--card-width);
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding-inline: clamp(0.25rem, 1.5vw, 1.25rem);
+}
+
+.header__logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 600;
+  margin-right: auto;
+  position: relative;
+  z-index: 2;
+}
+
+.header__mark {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 10px;
+  background: #fff;
+  color: var(--purple-800);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.header__name {
+  font-size: 0.95rem;
+}
+
+.header__nav {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+}
+
+.header__links {
+  display: flex;
+  gap: 0.25rem;
+  list-style: none;
+}
+
+.header__link {
+  display: block;
+  padding: 0.5rem 0.85rem;
+  border-radius: var(--radius-sm);
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.92rem;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.header__link {
+  position: relative;
+}
+
+.header__link::after {
+  content: "";
+  position: absolute;
+  left: 0.85rem;
+  right: 0.85rem;
+  bottom: 0.2rem;
+  height: 2px;
+  border-radius: 2px;
+  background: #fff;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.45s var(--ease);
+}
+
+.header__link:hover {
+  color: #fff;
+}
+
+.header__link:hover::after,
+.header__link.is-active::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.header__link.is-active {
+  color: #fff;
+  font-weight: 600;
+}
+
+.header {
+  animation: header-in 0.8s var(--ease) backwards;
+}
+
+@keyframes header-in {
+  from {
+    transform: translateY(-100%);
+  }
+}
+
+.header__cta {
+  height: 2.6rem;
+  font-size: 0.86rem;
+  background: #fff;
+  color: var(--purple-800);
+  box-shadow: none;
+}
+
+.header__cta:hover {
+  background: #f1e6fb;
+}
+
+.header__actions {
+  display: flex;
+  gap: 0.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.header__toggle {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .header__name {
+    display: none;
+  }
+
+  .header__toggle {
+    display: inline-grid;
+  }
+
+  .header__nav {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    gap: 2.5rem;
+    padding: calc(var(--header-h) + 1rem) 1.5rem 2rem;
+    background: var(--page-bg);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s;
+  }
+
+  .header__nav.is-open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .header__links {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .header__links li {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.4s var(--ease), transform 0.4s var(--ease);
+    transition-delay: calc(var(--i) * 50ms + 80ms);
+  }
+
+  .is-open .header__links li {
+    opacity: 1;
+    transform: none;
+  }
+
+  .header__link {
+    font-size: 2.1rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: #fff;
+    padding: 0.35rem 0;
+  }
+
+  .header__link:hover {
+    background: none;
+    color: #f1e6fb;
+  }
+
+  .header__link::after {
+    display: none;
+  }
+
+  .header__cta {
+    height: 3.25rem;
+    font-size: 1rem;
+  }
+}
+
+/* ---------- cleycode brand ---------- */
+.header__mark svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  stroke-width: 2.4;
+  transition: transform 0.5s var(--ease);
+}
+
+.header__logo:hover .header__mark svg {
+  transform: rotate(-12deg) scale(1.08);
+}
+
+.header__name {
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+@media (max-width: 900px) {
+  /* The wordmark is the brand: keep it visible on mobile too */
+  .header__name {
+    display: inline;
+  }
+}
