@@ -118,10 +118,13 @@
   gap: 0.75rem;
 }
 
-.footer__mark svg {
-  width: 1.5rem;
-  height: 1.5rem;
-  stroke-width: 2.4;
+.footer__mark .brand-mark {
+  width: 2.8rem;
+  height: 2.8rem;
+}
+
+.footer__wordmark .brand-cursor {
+  color: #e9b8ff;
 }
 
 .footer__wordmark {

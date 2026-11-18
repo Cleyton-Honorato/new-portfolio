@@ -1,5 +1,6 @@
-import { ArrowUp, Code2 } from "lucide-react";
+import { ArrowUp } from "lucide-react";
 import { profile, socials } from "../data/content";
+import { BrandMark } from "./BrandMark";
 import { SocialIcon } from "./SocialIcon";
 import "./Footer.css";
 
@@ -19,9 +20,12 @@ export function Footer() {
         <div className="footer__brand">
           <span className="footer__brand-row">
             <span className="footer__mark" aria-hidden="true">
-              <Code2 />
+              <BrandMark />
             </span>
-            <span className="footer__wordmark">{profile.brand}</span>
+            <span className="footer__wordmark">
+              {profile.brand}
+              <span className="brand-cursor" aria-hidden="true" />
+            </span>
           </span>
           <p>
             © {year} {profile.name}

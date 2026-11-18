@@ -27,7 +27,10 @@
   --accent-soft: rgba(130, 10, 209, 0.08);
   --accent-contrast: #ffffff;
 
-  --panel-bg: linear-gradient(120deg, #a232eb 0%, #8b14d6 45%, #820ad1 100%);
+  /* Panels run top → bottom so the seams know the edge colours */
+  --panel-top: #a232eb;
+  --panel-bottom: #820ad1;
+  --panel-bg: linear-gradient(180deg, var(--panel-top) 0%, #8b14d6 55%, var(--panel-bottom) 100%);
   --on-panel: #ffffff;
   --on-panel-muted: rgba(255, 255, 255, 0.8);
   --panel-card: rgba(255, 255, 255, 0.1);
@@ -144,24 +147,14 @@ button {
 }
 
 /* =========================================================
-   Layout: centered cards (white sheets and purple panels)
-   separated by the purple page background
+   Layout: full-bleed sections (white sheets and purple panels)
+   stacked edge to edge
    ========================================================= */
 .sheet,
 .panel {
   position: relative;
-  width: var(--card-width);
-  margin-inline: auto;
+  width: 100%;
   padding-block: var(--section-space);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-sheet);
-}
-
-.sheet + .panel,
-.panel + .sheet,
-.sheet + .sheet,
-.panel + .panel {
-  margin-top: var(--card-gap);
 }
 
 .sheet {
@@ -351,13 +344,6 @@ button {
   transform: translateY(24px);
 }
 
-@media (max-width: 640px) {
-  .sheet,
-  .panel {
-    border-radius: 22px;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -385,4 +371,54 @@ button {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
+
+/* =========================================================
+   cleycode mark {c_}
+   ========================================================= */
+.brand-mark {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.brand-mark__brace {
+  fill: var(--mark-brace, var(--purple-500));
+}
+
+.brand-mark__letter {
+  fill: var(--mark-letter, var(--purple-800));
+}
+
+.brand-mark__cursor,
+.brand-cursor {
+  animation: brand-blink 1.05s steps(1) infinite;
+}
+
+.brand-mark__cursor {
+  fill: var(--mark-cursor, var(--purple-800));
+}
+
+/* Inline cursor after the wordmark: cleycode_ */
+.brand-cursor {
+  display: inline-block;
+  width: 0.5em;
+  height: 0.17em;
+  margin-left: 0.08em;
+  border-radius: 0.04em;
+  background: currentColor;
+  vertical-align: baseline;
+}
+
+@keyframes brand-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brand-mark__cursor,
+  .brand-cursor {
+    animation: none;
+  }
 }

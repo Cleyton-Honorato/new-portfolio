@@ -51,7 +51,7 @@ export function Hero() {
               <SplitWords delay={120} step={80} segments={["Olá, eu sou", { text: "Cleyton", className: "hl" }]} />
             </span>
             <span className="hero__claim">
-              <SplitWords delay={420} step={60} segments={["Construo produtos digitais de ponta a ponta."]} />
+              <SplitWords delay={420} step={60} segments={["Do primeiro pixel ao deploy."]} />
             </span>
           </h1>
 

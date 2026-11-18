@@ -1,6 +1,7 @@
 import { useEffect, useState, type CSSProperties } from "react";
-import { Code2, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useMagnetic, useScrollSpy } from "../hooks/motion";
+import { BrandMark } from "./BrandMark";
 import "./Header.css";
 
 const links = [
@@ -41,9 +42,12 @@ export function Header() {
       <div className="header__inner">
         <a href="#inicio" className="header__logo" onClick={close} aria-label="cleycode — início">
           <span className="header__mark" aria-hidden="true">
-            <Code2 />
+            <BrandMark />
           </span>
-          <span className="header__name">cleycode</span>
+          <span className="header__name">
+            cleycode
+            <span className="brand-cursor" aria-hidden="true" />
+          </span>
         </a>
 
         <nav

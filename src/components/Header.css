@@ -208,15 +208,18 @@
 }
 
 /* ---------- cleycode brand ---------- */
-.header__mark svg {
-  width: 1.25rem;
-  height: 1.25rem;
-  stroke-width: 2.4;
+.header__mark .brand-mark {
+  width: 2.15rem;
+  height: 2.15rem;
   transition: transform 0.5s var(--ease);
 }
 
-.header__logo:hover .header__mark svg {
-  transform: rotate(-12deg) scale(1.08);
+.header__logo:hover .header__mark .brand-mark {
+  transform: rotate(-8deg) scale(1.08);
+}
+
+.header__name .brand-cursor {
+  color: #e9b8ff;
 }
 
 .header__name {

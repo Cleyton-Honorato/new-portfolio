@@ -20,126 +20,348 @@
 .services__grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 1rem;
+  gap: 1.1rem;
+  padding-top: 64px; /* room for the objects popping out of the cards */
 }
 
 .services__grid > div {
   display: flex;
 }
 
+/* ---------- Card: glass that tilts, with content on different depths ----------
+   --rx / --ry / --mx / --my come from useTilt (pointer over the card). */
 .service {
+  flex: 1;
+  display: flex;
+  perspective: 900px;
+}
+
+.service__body {
   position: relative;
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 0.9rem;
-  padding: 1.6rem 1.4rem 1.4rem;
+  min-height: 290px;
+  padding: 5rem 1.4rem 1.4rem;
   border-radius: var(--radius-lg);
-  background: var(--panel-card);
-  border: 1px solid var(--panel-card-border);
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05));
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 40px 60px -30px rgba(30, 0, 60, 0.6);
   color: #fff;
-  overflow: hidden;
-  isolation: isolate;
-  transition: transform 0.5s var(--ease), background-color 0.4s ease, border-color 0.4s ease;
+  transform-style: preserve-3d;
+  transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transition: transform 0.45s var(--ease), border-color 0.3s ease;
 }
 
-/* White card slides up behind the content on hover */
-.service::before {
-  content: "";
+.service:hover .service__body {
+  border-color: rgba(255, 255, 255, 0.55);
+}
+
+/* Light that follows the cursor */
+.service__glare {
   position: absolute;
   inset: 0;
-  z-index: -1;
-  background: var(--sheet);
-  transform: translateY(101%);
-  transition: transform 0.55s var(--ease);
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(circle at var(--mx, 50%) var(--my, 0%), rgba(255, 255, 255, 0.26), transparent 55%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
-.service:hover::before {
-  transform: none;
+.service:hover .service__glare {
+  opacity: 1;
 }
 
 .service__index {
   position: absolute;
-  top: 1.1rem;
-  right: 1.25rem;
-  font-size: 2.6rem;
+  top: 0.7rem;
+  right: 1.1rem;
+  font-size: 4.2rem;
   font-weight: 700;
   line-height: 1;
   letter-spacing: -0.04em;
-  color: rgba(255, 255, 255, 0.12);
-  transition: color 0.4s ease;
-}
-
-.service__icon {
-  display: grid;
-  place-items: center;
-  width: 3rem;
-  height: 3rem;
-  border-radius: 14px;
-  background: #fff;
-  color: var(--purple-800);
-  transition: background-color 0.4s ease, color 0.4s ease, transform 0.5s var(--ease);
-}
-
-.service__icon svg {
-  width: 1.35rem;
-  height: 1.35rem;
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.38);
+  transform: translateZ(28px);
 }
 
 .service__title {
-  margin-top: 0.4rem;
   font-size: 1.2rem;
   font-weight: 700;
   letter-spacing: -0.01em;
-  transition: color 0.4s ease;
+  transform: translateZ(50px);
 }
 
 .service__desc {
   flex: 1;
+  margin-top: 0.6rem;
   font-size: 0.9rem;
   font-weight: 300;
   color: var(--on-panel-muted);
-  transition: color 0.4s ease;
+  transform: translateZ(32px);
 }
 
 .service__tags {
   display: flex;
   flex-wrap: wrap;
   gap: 0.35rem;
+  margin-top: 1rem;
   list-style: none;
+  transform: translateZ(44px);
 }
 
 .service__tags li {
   padding: 0.22rem 0.6rem;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.16);
   font-size: 0.72rem;
   font-weight: 600;
-  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
-/* Hover: card turns white, content flips to the dark palette */
-.service:hover .service__index {
-  color: var(--accent-soft);
+/* ---------- Object breaking out of the top edge ---------- */
+.service__object {
+  position: absolute;
+  left: 50%;
+  top: -62px;
+  width: 140px;
+  height: 130px;
+  display: grid;
+  place-items: center;
+  transform-style: preserve-3d;
+  transform: translateX(-50%) translateZ(60px);
+  pointer-events: none;
 }
 
-.service:hover .service__icon {
-  background: var(--accent);
-  color: #fff;
-  transform: rotate(-8deg) scale(1.08);
+.service__shadow {
+  position: absolute;
+  left: 50%;
+  top: 74px;
+  width: 110px;
+  height: 16px;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(30, 0, 60, 0.45), transparent);
+  transform: translateX(-50%);
+  filter: blur(3px);
 }
 
-.service:hover .service__title {
-  color: var(--text);
+.service__float {
+  transform-style: preserve-3d;
+  animation: service-bob 5s ease-in-out var(--float-delay, 0s) infinite;
 }
 
-.service:hover .service__desc {
-  color: var(--text-muted);
+.service__turn {
+  transform-style: preserve-3d;
+  transform: rotateX(calc(14deg + var(--rx, 0deg) * 1.6)) rotateY(calc(-24deg + var(--ry, 0deg) * 2));
+  transition: transform 0.45s var(--ease);
 }
 
-.service:hover .service__tags li {
-  background: var(--accent-soft);
-  color: var(--accent);
+.service:hover .service__turn {
+  transform: rotateX(calc(14deg + var(--rx, 0deg) * 1.6)) rotateY(calc(-24deg + var(--ry, 0deg) * 2)) scale(1.06);
+}
+
+@keyframes service-bob {
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* ---------- Extruded objects ---------- */
+.x3d {
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.x3d__layer,
+.x3d__face {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--r);
+}
+
+.x3d__layer {
+  background: var(--side);
+}
+
+.x3d__face {
+  overflow: hidden;
+  transform: translateZ(calc(var(--d) / 2));
+}
+
+/* Browser window */
+.x3d--web {
+  --r: 12px;
+  --side: linear-gradient(90deg, #3b1760, #a37bc4 50%, #3b1760);
+  width: 132px;
+  height: 94px;
+}
+
+.x3d--web .x3d__face {
+  background: #f6f1fb;
+  box-shadow: inset 0 0 0 1.5px #d9c4ee;
+}
+
+.x3d__bar {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  height: 18px;
+  padding-left: 9px;
+  background: #e7d8f6;
+}
+
+.x3d__bar i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #b98ae0;
+}
+
+.x3d__bar i:first-child {
+  background: var(--purple-500);
+}
+
+.x3d__code {
+  display: grid;
+  gap: 7px;
+  padding: 10px 11px;
+}
+
+.x3d__code b {
+  display: block;
+  height: 6px;
+  border-radius: 3px;
+  background: #c9a4ec;
+}
+
+.x3d__code b:nth-child(1) { width: 60%; background: var(--purple-800); }
+.x3d__code b:nth-child(2) { width: 85%; margin-left: 10px; }
+.x3d__code b:nth-child(3) { width: 45%; margin-left: 10px; background: var(--purple-600); }
+.x3d__code b:nth-child(4) { width: 30%; }
+
+/* Phone */
+.x3d--phone {
+  --r: 16px;
+  --side: linear-gradient(90deg, #2a1640, #c4a6dc 50%, #2a1640);
+  width: 64px;
+  height: 124px;
+}
+
+.x3d--phone .x3d__face {
+  padding: 4px;
+  background: #0d0318;
+}
+
+.x3d__screen {
+  position: relative;
+  display: grid;
+  place-items: center;
+  height: 100%;
+  border-radius: 12px;
+  background: linear-gradient(160deg, #a232eb, #820ad1 55%, #4a0a7a);
+}
+
+.x3d__screen::before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  width: 22px;
+  height: 7px;
+  border-radius: 9px;
+  background: #000;
+  transform: translateX(-50%);
+}
+
+.x3d__screen span {
+  padding: 4px 6px;
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.18);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* Server rack */
+.x3d-rack {
+  position: relative;
+  width: 128px;
+  height: 108px;
+  transform-style: preserve-3d;
+}
+
+.x3d--server {
+  --r: 7px;
+  --side: linear-gradient(90deg, #2c0545, #9b6cc4 50%, #2c0545);
+  position: absolute;
+  left: 0;
+  width: 128px;
+  height: 30px;
+}
+
+.x3d--server:nth-child(2) { top: 39px; }
+.x3d--server:nth-child(3) { top: 78px; }
+
+.x3d--server .x3d__face {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 10px;
+  background: linear-gradient(180deg, #3d0b63, #25043c);
+  box-shadow: inset 0 0 0 1.5px #7a3fb0;
+}
+
+.x3d--server i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #5dffb0;
+  box-shadow: 0 0 8px #5dffb0;
+}
+
+.x3d--server i + i {
+  background: #e9b8ff;
+  box-shadow: 0 0 8px #e9b8ff;
+}
+
+.x3d--server b {
+  width: 46px;
+  height: 4px;
+  margin-left: auto;
+  border-radius: 2px;
+  background: repeating-linear-gradient(90deg, #7a3fb0 0 4px, transparent 4px 7px);
+}
+
+/* AI chip */
+.x3d--chip {
+  --r: 16px;
+  --side: linear-gradient(90deg, #3b1760, #b98ae0 50%, #3b1760);
+  width: 92px;
+  height: 92px;
+}
+
+.x3d--chip .x3d__face {
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle at 50% 40%, #b44cf5, #5c0a99 70%);
+  box-shadow: inset 0 0 0 2px #e9b8ff;
+}
+
+.x3d--chip .x3d__face span {
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  text-shadow: 0 0 14px #fff;
+}
+
+.x3d__pins {
+  position: absolute;
+  inset: -10px 16px;
+  border-radius: 3px;
+  background: repeating-linear-gradient(90deg, #d8b4fe 0 6px, transparent 6px 15px);
+}
+
+.x3d__pins--side {
+  inset: 16px -10px;
+  background: repeating-linear-gradient(180deg, #d8b4fe 0 6px, transparent 6px 15px);
 }
 
 @media (max-width: 1040px) {
@@ -148,8 +370,20 @@
   }
 }
 
+@media (max-width: 1040px) {
+  .services__grid {
+    row-gap: 5rem;
+  }
+}
+
 @media (max-width: 560px) {
   .services__grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .service__float {
+    animation: none;
   }
 }

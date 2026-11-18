@@ -1,7 +1,3 @@
-.contact {
-  margin-bottom: clamp(3rem, 7vw, 5.5rem);
-}
-
 .contact__panel {
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);

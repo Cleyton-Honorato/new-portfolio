@@ -13,23 +13,19 @@
   padding: calc(var(--header-h) + clamp(2rem, 5vw, 4rem)) 0 clamp(3.5rem, 7vw, 5.5rem);
   background: var(--hero-bg);
   color: var(--hero-text);
-  border-radius: 0 0 clamp(28px, 4vw, 56px) clamp(28px, 4vw, 56px);
   overflow: hidden;
   isolation: isolate;
-  box-shadow: 0 40px 80px -40px rgba(20, 0, 40, 0.8);
 }
 
-/* The first card below the hero needs breathing room */
-.hero + .sheet,
-.hero + .panel {
-  margin-top: calc(var(--card-gap) * 1.75);
-}
 
 .hero__bg {
   position: absolute;
   inset: 0;
   z-index: -1;
   pointer-events: none;
+  /* Glows fade out before the bottom edge so the seam starts on flat colour */
+  mask-image: linear-gradient(to bottom, #000 70%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 70%, transparent 100%);
 }
 
 .hero__glow {

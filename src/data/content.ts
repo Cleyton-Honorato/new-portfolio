@@ -198,6 +198,7 @@ export interface TimelineItem {
   current?: boolean;
 }
 
+
 export const experience: TimelineItem[] = [
   { title: "Desenvolvedor Fullstack", org: "Academe Educação", period: "2025 — hoje", current: true },
   { title: "Tech Lead", org: "pantheo.tech", period: "2025" },
