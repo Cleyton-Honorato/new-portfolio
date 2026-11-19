@@ -213,9 +213,9 @@ export function About() {
       <svg className="about__split" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
         <defs>
           <linearGradient id="about-split-fill" x1="0" y1="0" x2="0.6" y2="1">
-            <stop offset="0" stopColor="#a232eb" />
-            <stop offset="0.55" stopColor="#820ad1" />
-            <stop offset="1" stopColor="#6a07ad" />
+            <stop offset="0" stopColor="#7412bd" />
+            <stop offset="0.55" stopColor="#4f0a86" />
+            <stop offset="1" stopColor="#2a0645" />
           </linearGradient>
         </defs>
         {/* Desktop: the slab takes the left side, cut by a soft S-curve */}

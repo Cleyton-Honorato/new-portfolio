@@ -38,7 +38,7 @@ export function Header() {
   const close = () => setOpen(false);
 
   return (
-    <header className={`header${scrolled ? " header--scrolled" : ""}`}>
+    <header className={`header${scrolled ? " header--scrolled" : ""}${open ? " header--open" : ""}`}>
       <div className="header__inner">
         <a href="#inicio" className="header__logo" onClick={close} aria-label="cleycode — início">
           <span className="header__mark" aria-hidden="true">
@@ -69,7 +69,13 @@ export function Header() {
               </li>
             ))}
           </ul>
-          <a ref={cta} href="#contato" className="btn btn--primary header__cta" onClick={close}>
+          <a
+            ref={cta}
+            href="#contato"
+            className={`btn btn--primary header__cta${active === "contato" ? " is-active" : ""}`}
+            aria-current={active === "contato" ? "true" : undefined}
+            onClick={close}
+          >
             Vamos conversar
           </a>
         </nav>
